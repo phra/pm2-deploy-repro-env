@@ -34,7 +34,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:phra/pm2-deploy-repro-env.git',
       path: '/tmp/production',
-      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production && printenv'
+      'post-deploy': 'npm install && npm run build && pm2 reload ecosystem.config.js --env production && printenv'
     },
     dev: {
       user: 'phra',
@@ -42,7 +42,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:phra/pm2-deploy-repro-env.git',
       path: '/tmp/dev',
-      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env dev && printenv',
+      'post-deploy': 'npm install && npm run build && pm2 reload ecosystem.config.js --env dev && printenv',
       env: {
         NODE_ENV: 'dev'
       }
