@@ -3,22 +3,22 @@ module.exports = {
    * Application configuration section
    * http://pm2.keymetrics.io/docs/usage/application-declaration/
    */
-  apps : [
+  apps: [
 
     // First application
     {
-      name      : 'API',
-      script    : 'dist/index.js',
+      name: 'API',
+      script: 'dist/index.js',
       env: {
         COMMON_VARIABLE: 'true'
       },
-      env_production : {
+      env_production: {
         NODE_ENV: 'production',
-	PORT: 3000
+        PORT: 3000
       },
-      env_dev : {
+      env_dev: {
         VAR: 'VAR',
-	PORT: 4000
+        PORT: 4000
       }
     }
   ],
@@ -27,23 +27,23 @@ module.exports = {
    * Deployment section
    * http://pm2.keymetrics.io/docs/usage/deployment/
    */
-  deploy : {
-    production : {
-      user : 'phra',
-      host : 'localhost',
-      ref  : 'origin/master',
-      repo : 'git@github.com:phra/pm2-deploy-repro-env.git',
-      path : '/tmp/production',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
+  deploy: {
+    production: {
+      user: 'phra',
+      host: 'localhost',
+      ref: 'origin/master',
+      repo: 'git@github.com:phra/pm2-deploy-repro-env.git',
+      path: '/tmp/production',
+      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production && printenv'
     },
-    dev : {
-      user : 'phra',
-      host : 'localhost',
-      ref  : 'origin/master',
-      repo : 'git@github.com:phra/pm2-deploy-repro-env.git',
-      path : '/tmp/dev',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env dev',
-      env  : {
+    dev: {
+      user: 'phra',
+      host: 'localhost',
+      ref: 'origin/master',
+      repo: 'git@github.com:phra/pm2-deploy-repro-env.git',
+      path: '/tmp/dev',
+      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env dev && printenv',
+      env: {
         NODE_ENV: 'dev'
       }
     }
